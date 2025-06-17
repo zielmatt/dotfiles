@@ -32,3 +32,28 @@ alias gshd='git stash drop'
 alias gshl='git stash list'
 alias gshp='git stash pop'
 
+###
+### util functions
+###
+function up() {
+  local count="$1"
+  local up_path=""
+
+  if [ -z "$count" ]; then
+    count=1
+  fi
+
+  # Check if a valid number of levels is provided
+  if [[ ! "$count" =~ ^[0-9]+$ ]]; then
+    echo "Usage: up <number of directories to go up>"
+    return 1
+  fi
+
+  # Construct the path to move up
+  for ((i = 0; i < count; i++)); do
+    up_path="../$up_path"
+  done
+
+  # Change to the calculated path
+  cd "$up_path"
+}
