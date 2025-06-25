@@ -10,3 +10,4 @@ dotfs=$(cd $(dirname $0) && pwd)
 
 sym "$dotfs"
 
+source ~/.zshrc
